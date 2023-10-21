@@ -57,9 +57,27 @@ const updateQuestion = (req, res) => {
     });
 };
 
+// API endpoints for questions
+const getQuestion =  (req, res) => {
+  // Fetch a single question by ID
+  Question.findById(req.params.questionId)
+    .then((question) => {
+      if (question) {
+        return res.status(200).send({ question: question.content, options: question.options})
+      } else {
+        res.status(404).json({ message: 'Question not found' });
+      }
+    })
+    .catch((error) => {
+      res.status(500).json({ error: error.message });
+    });
+}
+
+
 
 
 module.exports = {
   setQuestion,
-  updateQuestion
+  updateQuestion,
+  getQuestion
 }

@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const { signIn, signUp } = require('../controllers/indexController');
 
-router.get('/test',(req,res) => {
-  res.status(200).send({
-    message: "First testing route point for test"
-  })
-})
+
+router.post('/signin', signIn);
+router.post('/signup', signUp);
 
 module.exports = router;

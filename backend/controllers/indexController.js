@@ -41,8 +41,13 @@ const signUp = (req,res) => {
   }
 }
 
+const helloWorld = (req,res) => {
+  res.send({message: "Hello Wold!!"})
+}
+
 
 module.exports = {
   signIn,
   signUp,
+  helloWorld
 }

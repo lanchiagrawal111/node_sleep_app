@@ -8,6 +8,7 @@ The Node Sleep App is a simple web application designed to help users track and 
 - [Data Schemas](#Data-Schemas)
 - [Api End Points](#API-Endpoints)
 - [Database](#Database-Connection-URL)
+- [Deployment On Vercel](#Deployment-Link)
 
 ## Prerequisites
 - Node.js and npm installed.
@@ -406,6 +407,19 @@ The `UserResponses` schema is a Mongoose model for managing user responses in ap
  ```
    mongodb+srv://lanchiagrawal11:Lanchi5566@cluster0.vmqenah.mongodb.net/Wysa?retryWrites=true&w=majority
  ```
+## Deployment Link
+```
+      https://node-sleep-app.vercel.app
+```
+** Collection Of Postman API's Link using deployment link **
+ - Here All api are present with request body, request params and response body and api endpoint with deployment 
+   link
+```
+      https://www.postman.com/universal-zodiac-865894/workspace/wysa-sleep-nodejs-backend/request/23126948- 
+      5b1ac968-5d90-433a-af5b-9fe3b50ec548
+```
+   
+
        
 
 

@@ -57,28 +57,31 @@ The `UserResponses` schema is a Mongoose model for managing user responses in ap
        
         ```
       - Api:
-  
-        ```
-            const setQuestion = (req, res) => {
-            const { content, options, nextQuestionId } = req.body;
-            if(content && options){
-            const newQuestion = new Question({
-            content,
-            options,
-            nextQuestion: nextQuestionId, // Set the reference to the next question
-            });
-            newQuestion
-            .save()
-            .then((createdQuestion) => {
-            res.status(201).json(createdQuestion); // Return the created question
-            })
-            .catch((error) => {
-            res.status(400).json({ error: error.message });
-            });
-            }else{
-            return res.status(400).send({ message: "Invalid Input, Add Option and question"})
-            }  
-            };
-      ```
+   
+       ```
+        const setQuestion = (req, res) => {
+              const { content, options, nextQuestionId } = req.body;
+              // Create a new question based on the request dat
+              if(content && options){
+              const newQuestion = new Question({
+                content,
+                options,
+                nextQuestion: nextQuestionId, // Set the reference to the next question
+              });
+
+              newQuestion
+                .save()
+                .then((createdQuestion) => {
+                  res.status(201).json(createdQuestion); // Return the created question
+                })
+                .catch((error) => {
+                  res.status(400).json({ error: error.message });
+                });
+              }else{
+                return res.status(400).send({ message: "Invalid Input, Add Option and question"})
+              }  
+       };
+        
+       ```
 
 

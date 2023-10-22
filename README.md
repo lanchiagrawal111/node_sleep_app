@@ -4,6 +4,7 @@ The Node Sleep App is a simple web application designed to help users track and 
 
 ## Data Schemas
 
+```
 ### User Schema:
 The `Users` schema is a Mongoose model for managing users in application. Each document in the `users` collection represents a user.
 
@@ -23,3 +24,13 @@ The `UserResponses` schema is a Mongoose model for managing user responses in ap
       - `user` (ObjectID): A reference to the user who provided the response. It is linked to the 'User' model.
       - `question` (ObjectID): A reference to the question to which the user responded. It is linked to the 'Question' model.
       - `selectedOption` (Array of Strings): An array of strings representing the selected options or choices by the user for the question.
+```
+
+## API Endpoints
+
+### POST /question
+Description: Retrieve information about [describe the resource].
+Request:
+- Parameters: [list request parameters]
+Response:
+- Example response JSON schema: [include schema or link to schema]

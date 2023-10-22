@@ -405,7 +405,7 @@ The `UserResponses` schema is a Mongoose model for managing user responses in ap
        ```
 ## Database Connection URL
 
-   [mongoAtlasLink] (mongodb+srv://lanchiagrawal11:Lanchi5566@cluster0.vmqenah.mongodb.net/Wysa?retryWrites=true&w=majority)
+   [mongoConnection](mongodb+srv://lanchiagrawal11:Lanchi5566@cluster0.vmqenah.mongodb.net/Wysa?retryWrites=true&w=majority)
  
 ## Deployment Link
 ```

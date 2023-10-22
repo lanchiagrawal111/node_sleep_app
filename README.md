@@ -3,13 +3,20 @@
 The Node Sleep App is a simple web application designed to help users track and manage their sleep patterns. It allows users to log their sleep hours, view statistics, and set goals for a better night's sleep.
 
 ## Table of Contents
-- [Getting Started](#getting-started)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Data Schemas](#Data-Schemas)
 - [Api End Points](#API-Endpoints)
 - [Database](#Database-Connection-URL)
 
+## Prerequisites
+- Node.js and npm installed.
+- MongoDB or another database setup.
+
+## Installation
+1. Clone the repository.
+2. Install dependencies with `npm install`.
+3. Start the server with `npm run server`.
 
 ## Data Schemas
 

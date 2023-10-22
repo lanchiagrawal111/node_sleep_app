@@ -30,8 +30,8 @@ The `UserResponses` schema is a Mongoose model for managing user responses in ap
 
 # Lists
 - POST /question
- - Description: Set Question or create the Question
-  - Request Parameters:
+  - Description: Set Question or create the Question
+    - Request Parameters:
     
        ```
         body = {
@@ -42,7 +42,8 @@ The `UserResponses` schema is a Mongoose model for managing user responses in ap
        
        ```
     - Response:
-        ```
+      
+       ```
         {
           "content": "That's a great goal. How long have you been struggling with your sleep?",
           "options": [
@@ -54,29 +55,30 @@ The `UserResponses` schema is a Mongoose model for managing user responses in ap
           "_id": "653511127673be89bcab948d",
           "__v": 0
          }
+       
         ```
   
-       ```
-        const setQuestion = (req, res) => {
-        const { content, options, nextQuestionId } = req.body;
-        if(content && options){
-        const newQuestion = new Question({
-          content,
-          options,
-          nextQuestion: nextQuestionId, // Set the reference to the next question
-        });
-        newQuestion
-          .save()
-          .then((createdQuestion) => {
-            res.status(201).json(createdQuestion); // Return the created question
-          })
-          .catch((error) => {
-            res.status(400).json({ error: error.message });
-          });
-        }else{
-          return res.status(400).send({ message: "Invalid Input, Add Option and question"})
-        }  
-      };
-    ```
+        ```
+              const setQuestion = (req, res) => {
+              const { content, options, nextQuestionId } = req.body;
+              if(content && options){
+              const newQuestion = new Question({
+                content,
+                options,
+                nextQuestion: nextQuestionId, // Set the reference to the next question
+              });
+              newQuestion
+                .save()
+                .then((createdQuestion) => {
+                  res.status(201).json(createdQuestion); // Return the created question
+                })
+                .catch((error) => {
+                  res.status(400).json({ error: error.message });
+                });
+              }else{
+                return res.status(400).send({ message: "Invalid Input, Add Option and question"})
+              }  
+            };
+      ```
 
 

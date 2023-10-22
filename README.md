@@ -7,8 +7,8 @@ The Node Sleep App is a simple web application designed to help users track and 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Data Schemas](#Data-Schemas)
-- [Api End Points](#routes)
-- [Database](#database)
+- [Api End Points](#API-Endpoints)
+- [Database](#Database-Connection-URL)
 
 
 ## Data Schemas
@@ -395,6 +395,8 @@ The `UserResponses` schema is a Mongoose model for managing user responses in ap
        }
         
        ```
+## Database Connection URL
+  - mongodb+srv://lanchiagrawal11:Lanchi5566@cluster0.vmqenah.mongodb.net/Wysa?retryWrites=true&w=majority
        
 
 

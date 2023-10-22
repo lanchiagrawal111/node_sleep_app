@@ -42,7 +42,8 @@ const signUp = (req,res) => {
 }
 
 const helloWorld = (req,res) => {
-  res.send({message: "Hello Wold!!"})
+  const link = "https://github.com/lanchiagrawal111/node_sleep_app/blob/main/README.md";
+  res.send(`<p>This is an API. Read the documentation <a href="${link}" style="color: blue;">here</a>.</p>`);
 }
 
 

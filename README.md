@@ -93,6 +93,7 @@ The `UserResponses` schema is a Mongoose model for managing user responses in ap
       
        ```
        Id of a Question ( 653511127673be89bcab948d )
+       /question/653511127673be89bcab948d
        
        ```
     - Request Body:
@@ -154,5 +155,50 @@ The `UserResponses` schema is a Mongoose model for managing user responses in ap
            };
         
        ```
+
+### Get Question With Id
+
+- GET /questions/:questionId
+  - Description: Retrieve a Question from Question Id
+    - Request Parameters:
+      
+       ```
+       Id of a Question (653511127673be89bcab948d)
+       questions/653511127673be89bcab948d
+       
+       ```
+    - Response:
+      
+       ```
+        {
+          "question": "That's a great goal. How long have you been struggling with your sleep?",
+          "options": [
+              "less than 2 weeks",
+              "2 to 8 weeks",
+              "more than 8 weeks"
+          ]
+         }
+       
+        ```
+      - Api:
+   
+       ```
+        const getQuestion =  (req, res) => {
+        // Fetch a single question by ID
+        Question.findById(req.params.questionId)
+          .then((question) => {
+            if (question) {
+              return res.status(200).send({ question: question.content, options: question.options})
+            } else {
+              res.status(404).json({ message: 'Question not found' });
+            }
+          })
+          .catch((error) => {
+            res.status(500).json({ error: error.message });
+          });
+      }
+        
+       ```
+
 
 

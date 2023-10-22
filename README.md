@@ -28,7 +28,6 @@ The `UserResponses` schema is a Mongoose model for managing user responses in ap
 
 ## API Endpoints
 
-# Lists
 - POST /question
   - Description: Set Question or create the Question
     - Request Parameters:

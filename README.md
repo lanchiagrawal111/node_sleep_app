@@ -85,7 +85,7 @@ The `UserResponses` schema is a Mongoose model for managing user responses in ap
        };
         
        ```
-### Update Question
+### Update Question (Generally for updating nextQuestionId)
 
 - PUT /question/:questionId
   - Description: Update a Question
@@ -199,6 +199,83 @@ The `UserResponses` schema is a Mongoose model for managing user responses in ap
       }
         
        ```
+
+### Store User Response on Submit and fetch a next question 
+
+- POST /onboarding
+  - Description: Store User Response on Submit and fetch a next question to be shown to the user
+    - Request Body:
+    
+       ```
+        body = {  
+                "question": "653511127673be89bcab948d",
+                "selectedOption" : ["less than 2 weeks"],
+                "user_id": "6533df596ff1839dabf6c18d"
+            }
+       
+       ```
+    - Response:
+      
+       ```
+        {
+                      
+             "userResponse": {
+                    "user": "6533df596ff1839dabf6c18d",
+                    "question": "653511127673be89bcab948d",
+                    "selectedOption": [
+                        "less than 2 weeks"
+                    ],
+                    "_id": "653525a27673be89bcab9493",
+                    "__v": 0
+                },
+             "nextQuestionId": "6534bdbafe809cef9f3cc356"
+
+         }
+       
+        ```
+      - Api:
+   
+       ```
+         const saveUserResponse = async (req, res) => {
+
+              if(!req.body.question || !req.body.selectedOption || !req.body.user_id){
+                return res.status(400).send({message:"Bad Request"})
+              }else{
+            
+              const questionId = req.body.question
+              const selectedOption = req.body.selectedOption
+              
+              // Create a UserResponse document to store the answer
+              const userResponse = new UserResponse({
+                user: req.body.user_id,
+                question: questionId,
+                selectedOption: selectedOption,
+              });
+            
+              try {
+                const savedUserResponse = await userResponse.save();
+            
+                const question = await getQuestionById(savedUserResponse.question);
+                if (question.nextQuestion) {
+                  res.status(201).json({
+                    userResponse: savedUserResponse,
+                    nextQuestionId: question.nextQuestion
+                  });
+                } else {
+                  res.status(404).json({ message: 'No Question Available' });
+                }
+              } catch (error) {
+                res.status(400).json({ error: error.message });
+              }
+              }  
+            }
+
+            const getQuestionById = async (questionId) => {
+              return await Question.findById(questionId).select('nextQuestion').exec();
+            };
+        
+       ```
+       
 
 
 

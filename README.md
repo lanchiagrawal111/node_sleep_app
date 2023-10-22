@@ -32,7 +32,7 @@ The `UserResponses` schema is a Mongoose model for managing user responses in ap
 
 - POST /question
   - Description: Set Question or create the Question
-    - Request Parameters:
+    - Request Body:
     
        ```
         body = {
@@ -83,6 +83,70 @@ The `UserResponses` schema is a Mongoose model for managing user responses in ap
                 return res.status(400).send({ message: "Invalid Input, Add Option and question"})
               }  
        };
+        
+       ```
+### Update Question
+
+- PUT /question/:questionId
+  - Description: Update a Question
+    - Request Parameters: Id of a Question ( 653511127673be89bcab948d )
+    - Request Body:
+    
+       ```
+        body = {
+         "content": "That's a great goal. How long have you been struggling with your sleep?",
+         "options": ["less than 2 weeks", "2 to 8 weeks", "more than 8 weeks"],
+         "nextQuestionId" : "6534e88727fbf1a9f1efaaa1"
+       }
+       
+       ```
+    - Response:
+      
+       ```
+        {
+          "content": "That's a great goal. How long have you been struggling with your sleep?",
+          "options": [
+              "less than 2 weeks",
+              "2 to 8 weeks",
+              "more than 8 weeks"
+          ],
+          "nextQuestion": "6534e88727fbf1a9f1efaaa1",
+          "_id": "653511127673be89bcab948d",
+          "__v": 0
+         }
+       
+        ```
+      - Api:
+   
+       ```
+        const updateQuestion = (req, res) => {
+          const { content, options, nextQuestionId } = req.body;
+              // Find the question by ID
+              Question.findById(req.params.questionId)
+                .then((question) => {
+                  if (!question) {
+                    return res.status(404).json({ message: 'Question not found' });
+                  }
+            
+               // Update the question properties
+               question.content = content || question.content;
+               question.options = options || question.options;
+               question.nextQuestion = nextQuestionId || question.nextQuestion;
+            
+                  // Save the updated question
+                  question
+                    .save()
+                    .then((updatedQuestion) => {
+                      res.status(201).json(updatedQuestion); // Return the updated question
+                    })
+                    .catch((error) => {
+                      res.status(400).json({ error: error.message });
+                    });
+                })
+                .catch((error) => {
+                  res.status(500).json({ error: error.message });
+                });
+           };
         
        ```
 

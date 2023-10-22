@@ -89,7 +89,12 @@ The `UserResponses` schema is a Mongoose model for managing user responses in ap
 
 - PUT /question/:questionId
   - Description: Update a Question
-    - Request Parameters: Id of a Question ( 653511127673be89bcab948d )
+    - Request Parameters:
+      
+       ```
+       Id of a Question ( 653511127673be89bcab948d )
+       
+       ```
     - Request Body:
     
        ```
